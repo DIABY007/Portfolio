@@ -47,23 +47,22 @@ export default function About() {
               className="space-y-4 text-[var(--color-foreground)]"
             >
               <p className="text-lg leading-relaxed">
-                Je suis <strong className="text-[var(--color-neon-blue)]">Diaby Souleymane KASSAMBA</strong>, 
-                étudiant en <strong>Licence Génie Logiciel</strong> et passionné par le développement de solutions 
-                numériques innovantes.
+                Je suis <strong className="text-[var(--color-neon-blue)]">Diaby Souleymane KASSAMBA</strong>,
+                fondateur de <strong>NeoCodex</strong> et développeur fullstack basé à Bobo-Dioulasso, Burkina Faso.
               </p>
-              
+
               <p className="text-lg leading-relaxed">
-                Mon approche est <strong className="text-[var(--color-neon-purple)]">orientée solutions, 
-                productivité et résultats business</strong>. Je combine mes compétences en développement 
-                fullstack avec une expertise en <strong>intelligence artificielle</strong> et en 
-                <strong> automatisation</strong> pour créer des outils qui transforment réellement 
-                les processus d&apos;affaires.
+                À 20 ans, j&apos;ai construit et déployé 3 produits SaaS en production —
+                <strong className="text-[var(--color-neon-blue)]"> NeoSchool</strong> (200+ utilisateurs dans 5 établissements),
+                <strong className="text-[var(--color-neon-purple)]"> NeoChat</strong> (automatisation WhatsApp, pilote universitaire en cours)
+                et <strong className="text-[var(--color-neon-blue)]"> NeoShop</strong> (marketplace C2C locale).
+                NeoCodex, mon agence, génère du revenu réel sur des projets clients.
               </p>
-              
+
               <p className="text-lg leading-relaxed">
-                Spécialisé dans l&apos;<strong>innovation technologique</strong>, l&apos;
-                <strong>entrepreneuriat digital</strong> et la <strong>cybersécurité</strong>, 
-                je transforme les défis complexes en opportunités numériques.
+                Je travaille principalement avec <strong>Next.js</strong>, <strong>Supabase</strong> et des
+                intégrations <strong className="text-[var(--color-neon-purple)]">IA</strong> — sur des
+                problèmes concrets, pas des maquettes.
               </p>
             </motion.div>
 

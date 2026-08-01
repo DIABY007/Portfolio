@@ -7,7 +7,7 @@ import Link from 'next/link';
 export default function Hero() {
   const handleScrollToPortfolio = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const element = document.querySelector('#portfolio');
+    const element = document.querySelector('#projets');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -33,7 +33,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-[var(--color-neon-blue)] to-[var(--color-neon-purple)] bg-clip-text text-transparent"
             >
-              Transformer les idées en solutions numériques intelligentes.
+              Je construis des outils qui travaillent pour toi.
             </motion.h1>
             
             <motion.p
@@ -42,7 +42,8 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl text-[var(--color-foreground)] mb-8"
             >
-              Développeur Fullstack & Expert en Automatisation IA.
+              Automatisation, SaaS, bots WhatsApp — des solutions en production, pas des maquettes.
+Fondateur de NeoCodex · Développeur Fullstack · Bobo-Dioulasso
             </motion.p>
 
             {/* Boutons CTA */}
@@ -53,7 +54,7 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             >
               <Link
-                href="#portfolio"
+                href="#projets"
                 onClick={handleScrollToPortfolio}
                 className="px-8 py-4 bg-[var(--color-neon-blue)] text-[var(--color-background)] rounded-lg font-semibold hover:bg-[var(--color-neon-purple)] transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[var(--color-neon-blue)]/50"
               >

@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,11 @@ export default function Navigation() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMenuOpen(false); // Fermer le menu mobile après clic
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -38,7 +44,7 @@ export default function Navigation() {
             onClick={(e) => handleNavClick(e, '#hero')}
             className="text-xl font-bold text-[var(--color-neon-blue)] hover:text-[var(--color-neon-purple)] transition-colors"
           >
-            Portfolio
+            Projets
           </Link>
           <div className="hidden md:flex space-x-6">
             <Link
@@ -63,11 +69,11 @@ export default function Navigation() {
               Services
             </Link>
             <Link
-              href="#portfolio"
-              onClick={(e) => handleNavClick(e, '#portfolio')}
+              href="#projets"
+              onClick={(e) => handleNavClick(e, '#projets')}
               className="text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors"
             >
-              Portfolio
+              Projets
             </Link>
             <Link
               href="#contact"
@@ -78,12 +84,58 @@ export default function Navigation() {
             </Link>
           </div>
           <button 
-            className="md:hidden text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)]"
+            onClick={toggleMenu}
+            className="md:hidden text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors text-2xl"
             aria-label="Menu de navigation"
-            aria-expanded="false"
+            aria-expanded={isMenuOpen}
           >
-            ☰
+            {isMenuOpen ? '✕' : '☰'}
           </button>
+        </div>
+        
+        {/* Menu mobile */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="flex flex-col space-y-4 pb-4">
+            <Link
+              href="#hero"
+              onClick={(e) => handleNavClick(e, '#hero')}
+              className="text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors py-2"
+            >
+              Accueil
+            </Link>
+            <Link
+              href="#about"
+              onClick={(e) => handleNavClick(e, '#about')}
+              className="text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors py-2"
+            >
+              À Propos
+            </Link>
+            <Link
+              href="#services"
+              onClick={(e) => handleNavClick(e, '#services')}
+              className="text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors py-2"
+            >
+              Services
+            </Link>
+            <Link
+              href="#projets"
+              onClick={(e) => handleNavClick(e, '#projets')}
+              className="text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors py-2"
+            >
+              Projets
+            </Link>
+            <Link
+              href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors py-2"
+            >
+              Contact
+            </Link>
+          </div>
         </div>
       </div>
     </nav>

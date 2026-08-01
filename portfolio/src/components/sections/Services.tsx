@@ -9,19 +9,19 @@ const services = [
   {
     Icon: FaLaptopCode,
     title: 'Développement Web & SaaS',
-    description: 'Sites vitrines et E-commerce (Next.js, Laravel), Applications de gestion (SaaS)',
+    description: 'Tu as un processus métier à digitaliser ou un produit à lancer. Je conçois et déploie l\'outil — de la base de données à l\'interface — sans que tu aies à gérer 3 prestataires différents.',
     color: 'neon-blue',
   },
   {
     Icon: FaRobot,
-    title: 'Automatisation & Chatbots',
-    description: 'Création de Bots WhatsApp (Répondeurs automatiques, Service client), Automatisation des processus via Make (Integromat)',
+    title: 'Automatisation & Bots WhatsApp',
+    description: 'Tes équipes perdent du temps sur des tâches répétitives. Je connecte tes outils et automatise les flux — réponses clients, notifications, gestion de commandes — 24h/24.',
     color: 'neon-purple',
   },
   {
     Icon: FaBrain,
-    title: 'Solutions IA & Contenu',
-    description: 'Intégration d\'IA générative (Texte, Image, Vidéo), Création de visuels publicitaires',
+    title: 'Intégration IA',
+    description: 'Tu veux que l\'IA travaille pour ton business — générer du contenu, répondre à tes clients, créer tes visuels — sans avoir à comprendre comment ça fonctionne. Je m\'occupe de tout, tu utilises le résultat.',
     color: 'neon-blue',
   },
 ];

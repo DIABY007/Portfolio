@@ -158,7 +158,7 @@ export default function Contact() {
                     <span className="text-2xl">📧</span>
                     <a
                       href="mailto:kassambasouleymane@gmail.com"
-                      className="text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors"
+                      className="text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors underline underline-offset-2 decoration-[var(--color-neon-blue)]/50 hover:decoration-[var(--color-neon-blue)]"
                     >
                       kassambasouleymane@gmail.com
                     </a>

@@ -12,7 +12,7 @@ export default function Portfolio() {
 
   return (
     <section
-      id="portfolio"
+      id="projets"
       ref={ref}
       className="min-h-screen flex items-center justify-center py-20 px-4 bg-[var(--color-background)]"
     >
@@ -23,7 +23,7 @@ export default function Portfolio() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-[var(--color-neon-blue)] to-[var(--color-neon-purple)] bg-clip-text text-transparent">
-            Portfolio
+            Projets
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
