@@ -16,7 +16,7 @@ export const projects: Project[] = [
     title: 'NeoSchool',
     client: 'Établissements Scolaires (Lycées & Primaires)',
     badge: 'SaaS B2B Gestion Scolaire',
-    image: '/images/projects/neoschool.svg',
+    image: '/images/projects/neoschool.png',
     description: `🎯 Problème
 Les établissements scolaires gèrent tout manuellement : les parents peinent à suivre les notes, l'information circule mal et les professeurs perdent des heures sur l'administratif.
 

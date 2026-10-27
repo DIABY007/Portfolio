@@ -28,23 +28,24 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       className="bg-[var(--color-dark-gray)] rounded-xl border border-white/10 hover:border-[var(--color-neon-blue)]/50 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-[var(--color-neon-blue)]/10"
     >
       <div>
-        {/* En-tête visuel / Logo du projet */}
+        {/* En-tête visuel / Capture réelle du projet */}
         <div 
-          className="w-full h-48 bg-gradient-to-b from-white/[0.03] to-[var(--color-darker-gray)] flex items-center justify-center relative p-6 border-b border-white/5"
+          className="w-full h-52 bg-[var(--color-darker-gray)] relative overflow-hidden border-b border-white/10 group"
           role="img"
-          aria-label={`Logo ou aperçu du projet ${project.title}`}
+          aria-label={`Interface du projet ${project.title}`}
         >
           {project.image ? (
-            <div className="relative w-full h-full flex items-center justify-center">
+            <div className="relative w-full h-full">
               <Image 
                 src={project.image} 
-                alt={`Logo du projet ${project.title}`} 
+                alt={`Capture d'écran du projet ${project.title}`} 
                 fill
-                className="object-contain p-4 filter drop-shadow-md" 
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105" 
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-dark-gray)] via-transparent to-transparent opacity-60"></div>
             </div>
           ) : (
-            <div className="text-4xl text-[var(--color-neon-blue)] font-bold">
+            <div className="text-4xl text-[var(--color-neon-blue)] font-bold flex items-center justify-center h-full">
               {project.title.slice(0, 2).toUpperCase()}
             </div>
           )}
