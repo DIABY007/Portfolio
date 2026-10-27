@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Project } from '@/data/projects';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaExternalLinkAlt, FaGithub, FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
 
 interface ProjectCardProps {
   project: Project;
@@ -12,11 +12,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
-  const hasLiveLink = project.lienLive && project.lienLive !== '#';
-  const hasGithubLink = project.lienGitHub && project.lienGitHub !== '#';
-
   const demoWhatsappUrl = `https://wa.me/22656636039?text=${encodeURIComponent(
-    `Bonjour Diaby, je souhaite en savoir plus ou avoir une démonstration du projet ${project.title}.`
+    `Bonjour Diaby, je souhaite avoir une démonstration privée du projet ${project.title}.`
   )}`;
 
   return (
@@ -86,44 +83,17 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
       </div>
 
-      {/* Boutons d'action */}
-      <div className="p-6 pt-0 flex flex-wrap gap-3">
-        {hasLiveLink && (
-          <Link
-            href={project.lienLive!}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 min-w-[120px] px-4 py-2.5 bg-[var(--color-neon-blue)] text-[var(--color-background)] rounded-lg font-semibold hover:bg-[var(--color-neon-purple)] transition-colors text-center text-sm flex items-center justify-center gap-2"
-          >
-            <span>Voir en live</span>
-            <FaExternalLinkAlt className="text-xs" />
-          </Link>
-        )}
-
-        {hasGithubLink && (
-          <Link
-            href={project.lienGitHub!}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 min-w-[120px] px-4 py-2.5 border border-white/20 text-[var(--color-foreground)] rounded-lg font-semibold hover:border-[var(--color-neon-blue)] hover:text-[var(--color-neon-blue)] transition-colors text-center text-sm flex items-center justify-center gap-2"
-          >
-            <FaGithub />
-            <span>GitHub</span>
-          </Link>
-        )}
-
-        {/* Bouton démo WhatsApp pour les projets sans lien direct ou internes */}
-        {!hasLiveLink && (
-          <Link
-            href={demoWhatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 min-w-[140px] px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-semibold transition-colors text-center text-sm flex items-center justify-center gap-2 shadow-sm"
-          >
-            <FaWhatsapp className="text-base" />
-            <span>Demander une démo</span>
-          </Link>
-        )}
+      {/* Bouton d'action unique : Demande de démonstration privée */}
+      <div className="p-6 pt-0">
+        <Link
+          href={demoWhatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full px-5 py-3.5 bg-[var(--color-neon-blue)] text-[var(--color-background)] rounded-xl font-bold hover:bg-[var(--color-neon-purple)] transition-all duration-300 text-center text-sm flex items-center justify-center gap-2.5 shadow-md shadow-[var(--color-neon-blue)]/20 hover:shadow-[var(--color-neon-purple)]/30 group"
+        >
+          <FaWhatsapp className="text-lg group-hover:scale-110 transition-transform" />
+          <span>Demander une démo privée</span>
+        </Link>
       </div>
     </motion.div>
   );

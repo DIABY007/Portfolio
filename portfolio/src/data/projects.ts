@@ -5,8 +5,6 @@ export interface Project {
   badge: string;
   description: string;
   technologies: string[];
-  lienGitHub?: string;
-  lienLive?: string;
   image?: string;
 }
 
@@ -28,8 +26,6 @@ NeoSchool centralise la vie scolaire en un seul outil avec 3 portails distincts 
 • 200+ utilisateurs actifs mensuels
 • En production continue depuis septembre 2025`,
     technologies: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'Livewire'],
-    lienGitHub: 'https://github.com/DIABY007/NeoSchool',
-    lienLive: 'https://neoschool.pro',
   },
   {
     id: 'neochat',
@@ -48,8 +44,6 @@ Déploiement et intégration d'un bot WhatsApp intelligent connecté à la base 
 • 250+ étudiants et contacts touchés dès le pilote
 • 93h de travail économisées collectivement sur l'accueil`,
     technologies: ['Next.js', 'WhatsApp API', 'Node.js', 'Supabase', 'IA'],
-    lienGitHub: '#',
-    lienLive: '#',
   },
   {
     id: 'licopress',
@@ -71,8 +65,6 @@ Une plateforme complète sur-mesure pour Licopress :
 • Calcul automatique et équitable des frais de livraison
 • 0 litige client grâce à la confirmation cryptographique OTP`,
     technologies: ['Android (Kotlin)', 'Jetpack Compose', 'Next.js 16', 'OSRM', 'Leaflet', 'API SMS Orange', 'PWA'],
-    lienGitHub: 'https://github.com/DIABY007',
-    lienLive: '#',
   },
   {
     id: 'clinique-yaalgre',
@@ -94,8 +86,6 @@ Un système de gestion hospitalière complet développé en architecture Offline
 • 15 tables relationnelles PostgreSQL avec politiques de sécurité RLS
 • Déploiement instantané sur tablettes, ordinateurs et mobiles sans store`,
     technologies: ['Next.js 16', 'Supabase (PostgreSQL)', 'Dexie.js (Offline-First)', 'PWA (Serwist)', 'TanStack Query', 'Shadcn UI'],
-    lienGitHub: '#',
-    lienLive: '#',
   },
   {
     id: 'aurore-agrovital',
@@ -117,8 +107,6 @@ Application web de suivi et d'engagement santé développée pour Aurore AgroVit
 • Classement et scoring cumulatif automatisés en temps réel
 • Zéro mot de passe : taux de friction à la connexion réduit à zéro`,
     technologies: ['Next.js 16', 'Supabase', 'Tailwind CSS', 'Server Actions', 'WhatsApp Link Auth'],
-    lienGitHub: '#',
-    lienLive: '#',
   },
   {
     id: 'neoshop',
@@ -140,7 +128,5 @@ Une marketplace locale pensée mobile-first pour Bobo-Dioulasso :
 • +500 produits actifs répertoriés
 • +300 comptes créés (vendeurs et acheteurs actifs)`,
     technologies: ['Next.js', 'Supabase', 'TypeScript', 'Tailwind CSS', 'WhatsApp Notifications', 'PostHog'],
-    lienGitHub: 'https://github.com/DIABY007/NeoShop',
-    lienLive: 'https://neoshop.world',
   },
 ];
