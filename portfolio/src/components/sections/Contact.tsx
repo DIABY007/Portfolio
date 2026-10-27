@@ -19,17 +19,16 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Nettoyer le numéro de téléphone (supprimer les espaces, tirets, etc.)
-    const cleanPhone = formData.phone.replace(/\s|-|\(|\)/g, '');
-    
-    // Créer le message prérempli avec le nom et le message
-    const whatsappMessage = `Bonjour, je suis ${formData.name}. ${formData.message}`;
+    // Message prérempli avec le nom, le contact et le projet du visiteur
+    const clientPhoneInfo = formData.phone ? ` (${formData.phone})` : '';
+    const whatsappMessage = `Bonjour Diaby, je suis ${formData.name}${clientPhoneInfo}.\n\n${formData.message}`;
     
     // Encoder le message pour l'URL
     const encodedMessage = encodeURIComponent(whatsappMessage);
     
-    // Créer le lien WhatsApp
-    const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedMessage}`;
+    // Ton numéro WhatsApp professionnel (+226 56 63 60 39)
+    const myPhoneNumber = '22656636039';
+    const whatsappUrl = `https://wa.me/${myPhoneNumber}?text=${encodedMessage}`;
     
     // Ouvrir WhatsApp dans un nouvel onglet
     window.open(whatsappUrl, '_blank');
@@ -124,9 +123,9 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-8 py-4 bg-[var(--color-neon-blue)] text-[var(--color-background)] rounded-lg font-semibold hover:bg-[var(--color-neon-purple)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-8 py-4 bg-[var(--color-neon-blue)] text-[var(--color-background)] rounded-lg font-semibold hover:bg-[var(--color-neon-purple)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
-                  {isSubmitting ? 'Ouverture de WhatsApp...' : 'Ouvrir WhatsApp'}
+                  {isSubmitting ? 'Ouverture de WhatsApp...' : 'Envoyer sur WhatsApp'}
                 </button>
                 
                 {submitStatus === 'success' && (
@@ -135,7 +134,7 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     className="p-4 bg-green-500/20 border border-green-500 rounded-lg text-green-400 text-center"
                   >
-                    WhatsApp ouvert ! Vous pouvez maintenant envoyer votre message.
+                    WhatsApp ouvert ! Vous pouvez maintenant envoyer votre message pré-rempli.
                   </motion.div>
                 )}
               </form>
@@ -157,10 +156,10 @@ export default function Contact() {
                   <div className="flex items-center space-x-4">
                     <span className="text-2xl">📧</span>
                     <a
-                      href="mailto:kassambasouleymane@gmail.com"
+                      href="mailto:kassambasouleymane8@gmail.com"
                       className="text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors underline underline-offset-2 decoration-[var(--color-neon-blue)]/50 hover:decoration-[var(--color-neon-blue)]"
                     >
-                      kassambasouleymane@gmail.com
+                      kassambasouleymane8@gmail.com
                     </a>
                   </div>
                   

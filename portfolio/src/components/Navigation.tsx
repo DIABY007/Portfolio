@@ -42,9 +42,10 @@ export default function Navigation() {
           <Link
             href="#hero"
             onClick={(e) => handleNavClick(e, '#hero')}
-            className="text-xl font-bold text-[var(--color-neon-blue)] hover:text-[var(--color-neon-purple)] transition-colors"
+            className="text-lg md:text-xl font-bold tracking-tight text-[var(--color-foreground)] hover:text-[var(--color-neon-blue)] transition-colors flex items-center gap-2"
           >
-            Projets
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-neon-blue)]"></span>
+            <span>Diaby S. KASSAMBA</span>
           </Link>
           <div className="hidden md:flex space-x-6">
             <Link

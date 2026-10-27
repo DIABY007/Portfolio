@@ -5,7 +5,7 @@ import {
   FaTools,
   FaBrain,
   FaRocket,
-  FaCode
+  FaMobileAlt,
 } from 'react-icons/fa';
 import {
   SiNextdotjs,
@@ -16,7 +16,9 @@ import {
   SiPrisma,
   SiTypescript,
   SiVercel,
-  SiWhatsapp
+  SiWhatsapp,
+  SiKotlin,
+  SiAndroid,
 } from 'react-icons/si';
 
 export interface Skill {
@@ -26,33 +28,34 @@ export interface Skill {
 }
 
 export const skills: Skill[] = [
-  // Frontend
-  { name: 'Next.js', category: 'Frontend', Icon: SiNextdotjs },
-  { name: 'React', category: 'Frontend', Icon: FaReact },
-  { name: 'Tailwind CSS', category: 'Frontend', Icon: SiTailwindcss },
-  { name: 'TypeScript', category: 'Frontend', Icon: SiTypescript },
+  // Frontend & Mobile
+  { name: 'Next.js 16', category: 'Frontend & Mobile', Icon: SiNextdotjs },
+  { name: 'Android (Kotlin)', category: 'Frontend & Mobile', Icon: SiKotlin },
+  { name: 'React', category: 'Frontend & Mobile', Icon: FaReact },
+  { name: 'TypeScript', category: 'Frontend & Mobile', Icon: SiTypescript },
+  { name: 'Tailwind CSS', category: 'Frontend & Mobile', Icon: SiTailwindcss },
 
-  // Backend & DB
-  { name: 'Supabase', category: 'Backend & DB', Icon: SiSupabase },
-  { name: 'PostgreSQL', category: 'Backend & DB', Icon: SiPostgresql },
-  { name: 'Prisma', category: 'Backend & DB', Icon: SiPrisma },
-  { name: 'Laravel', category: 'Backend & DB', Icon: SiLaravel },
+  // Backend & Base de données
+  { name: 'Supabase', category: 'Backend & Base de données', Icon: SiSupabase },
+  { name: 'PostgreSQL', category: 'Backend & Base de données', Icon: SiPostgresql },
+  { name: 'Laravel (PHP)', category: 'Backend & Base de données', Icon: SiLaravel },
+  { name: 'Prisma ORM', category: 'Backend & Base de données', Icon: SiPrisma },
 
   // IA & Automatisation
-  { name: 'OpenRouter', category: 'IA & Automatisation', Icon: FaBrain },
-  { name: 'Replicate', category: 'IA & Automatisation', Icon: FaRocket },
-  { name: 'WhatsApp API', category: 'IA & Automatisation', Icon: SiWhatsapp },
+  { name: 'Bots WhatsApp API', category: 'IA & Automatisation', Icon: SiWhatsapp },
+  { name: 'OpenRouter / LLMs', category: 'IA & Automatisation', Icon: FaBrain },
+  { name: 'Génération de Médias IA', category: 'IA & Automatisation', Icon: FaRocket },
 
-  // DevOps & Outils
-  { name: 'Git', category: 'DevOps & Outils', Icon: FaGitAlt },
-  { name: 'GitHub', category: 'DevOps & Outils', Icon: FaGithub },
-  { name: 'Vercel', category: 'DevOps & Outils', Icon: SiVercel },
-  { name: 'PM2', category: 'DevOps & Outils', Icon: FaTools },
+  // Architecture & DevOps
+  { name: 'PWA (Offline-First)', category: 'Architecture & DevOps', Icon: FaMobileAlt },
+  { name: 'Git & GitHub', category: 'Architecture & DevOps', Icon: FaGithub },
+  { name: 'Vercel', category: 'Architecture & DevOps', Icon: SiVercel },
+  { name: 'PM2 & Linux', category: 'Architecture & DevOps', Icon: FaTools },
 ];
 
 export const skillCategories = [
-  'Frontend',
-  'Backend & DB',
+  'Frontend & Mobile',
+  'Backend & Base de données',
   'IA & Automatisation',
-  'DevOps & Outils',
+  'Architecture & DevOps',
 ];
