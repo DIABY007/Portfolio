@@ -40,3 +40,9 @@ yarn-error.log*
 __pycache__/
 *.pyc
 
+
+# Confidential Identity Documents
+*CNIB*
+*RCCM*.pdf
+*IFU*.pdf
+
