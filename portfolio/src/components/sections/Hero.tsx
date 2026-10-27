@@ -115,12 +115,12 @@ export default function Hero() {
               {/* Halo d'ambiance discret */}
               <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-neon-blue)]/20 to-[var(--color-neon-purple)]/20 rounded-3xl blur-2xl opacity-50"></div>
               
-              <div className="relative w-full h-full rounded-2xl border border-white/15 overflow-hidden shadow-2xl bg-[var(--color-darker-gray)]">
+              <div className="relative w-full h-full rounded-2xl border border-white/15 overflow-hidden shadow-2xl bg-gradient-to-b from-white/[0.07] via-[var(--color-darker-gray)] to-black/80 flex items-end justify-center">
                 <Image
-                  src="/images/profile.jpg"
+                  src="/images/profile.png"
                   alt="Photo professionnelle de Diaby Souleymane KASSAMBA, Développeur Full-Stack"
                   fill
-                  className="object-cover"
+                  className="object-contain object-bottom pt-4"
                   priority
                 />
               </div>
