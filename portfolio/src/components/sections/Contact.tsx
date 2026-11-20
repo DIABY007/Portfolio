@@ -67,8 +67,8 @@ export default function Contact() {
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Formulaire */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -142,8 +142,8 @@ export default function Contact() {
 
             {/* Coordonnées */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-6"
             >

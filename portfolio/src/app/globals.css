@@ -21,22 +21,53 @@
 
 html {
   color-scheme: dark;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
   background-color: #02070d;
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 100%;
+  overflow-x: clip;
+  position: relative;
 }
 
 /* Sections transparentes pour révéler le fond animé 3D interactif */
 section {
   background-color: transparent !important;
   background-image: none !important;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 /* Glassmorphism pour les cartes de contenu */
 .bg-\[var\(--color-dark-gray\)\] {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+}
+
+/* Masquage complet du widget flottant Botpress sur mobile */
+@media (max-width: 768px) {
+  #bp-web-widget-container,
+  #bp-web-widget,
+  .bpw-widget-btn,
+  .bpw-floating-button,
+  div[id^="bp-web-widget"],
+  div[class*="bpw-"],
+  div[class*="bp-widget"],
+  iframe[id^="bp-web-widget"],
+  iframe[title*="Botpress"],
+  iframe[src*="botpress"],
+  iframe[title*="Chat"],
+  [data-testid="bp-widget"],
+  .bp-chat-widget,
+  #webchat {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    transform: scale(0) !important;
+  }
 }

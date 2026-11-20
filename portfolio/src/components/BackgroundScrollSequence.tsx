@@ -239,7 +239,7 @@ export default function BackgroundScrollSequence({
       )}
 
       {/* Canvas en arrière-plan fixe */}
-      <div className="fixed inset-0 w-screen h-screen -z-10 pointer-events-none overflow-hidden bg-[#02070d]">
+      <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none overflow-hidden bg-[#02070d]">
         <canvas ref={canvasRef} className="block w-full h-full" />
         {/* Overlay sombre garantissant la lisibilité parfaite des textes et cartes */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#02070d]/65 via-[#02070d]/45 to-[#02070d]/70 pointer-events-none" />

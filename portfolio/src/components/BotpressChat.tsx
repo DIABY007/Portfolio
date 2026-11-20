@@ -4,6 +4,11 @@ import { useEffect } from 'react';
 
 export default function BotpressChat() {
   useEffect(() => {
+    // Ne pas charger Botpress sur les écrans mobiles (< 768px)
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return;
+    }
+
     // Vérifier si les scripts sont déjà chargés
     const existingScript1 = document.querySelector('script[src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"]');
     const existingScript2 = document.querySelector('script[src="https://files.bpcontent.cloud/2026/01/26/01/20260126013149-L3DTFTYD.js"]');
@@ -26,7 +31,6 @@ export default function BotpressChat() {
     script2.id = 'botpress-config-script';
     document.body.appendChild(script2);
 
-    // Nettoyage lors du démontage du composant (optionnel, car les scripts peuvent rester)
     return () => {
       const script1ToRemove = document.getElementById('botpress-inject-script');
       const script2ToRemove = document.getElementById('botpress-config-script');
@@ -42,4 +46,3 @@ export default function BotpressChat() {
 
   return null; // Ce composant ne rend rien visuellement
 }
-

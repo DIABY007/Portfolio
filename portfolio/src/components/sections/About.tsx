@@ -64,8 +64,8 @@ export default function About() {
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             {/* Contenu texte */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:col-span-6 space-y-4 text-[var(--color-foreground)]"
             >
@@ -86,8 +86,8 @@ export default function About() {
 
             {/* Grille de métriques clés (Preuve sociale) */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="lg:col-span-6 grid sm:grid-cols-2 gap-4"
             >
