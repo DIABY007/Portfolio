@@ -46,3 +46,12 @@ __pycache__/
 *RCCM*.pdf
 *IFU*.pdf
 
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
+
+# Sequence archive in root
+1070380513_1795066174226452-ezgif-split.zip
+1070380513_1795066174226452-ezgif-split/
+index.html
+scroll-animation.html
+

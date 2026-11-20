@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import BotpressChat from "@/components/BotpressChat";
+import BackgroundScrollSequence from "@/components/BackgroundScrollSequence";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -48,11 +49,14 @@ export default function RootLayout({
   return (
     <html lang="fr" className="dark">
       <body
-        className={`${inter.variable} antialiased font-sans`}
+        className={`${inter.variable} antialiased font-sans relative`}
       >
-        <Navigation />
-        {children}
-        <BotpressChat />
+        <BackgroundScrollSequence />
+        <div className="relative z-10">
+          <Navigation />
+          {children}
+          <BotpressChat />
+        </div>
       </body>
     </html>
   );
