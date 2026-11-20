@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import BotpressChat from "@/components/BotpressChat";
 import BackgroundScrollSequence from "@/components/BackgroundScrollSequence";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -51,12 +52,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased font-sans relative`}
       >
-        <BackgroundScrollSequence />
-        <div className="relative z-10">
-          <Navigation />
-          {children}
-          <BotpressChat />
-        </div>
+        <SmoothScrollProvider>
+          <BackgroundScrollSequence />
+          <div className="relative z-10">
+            <Navigation />
+            {children}
+            <BotpressChat />
+          </div>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

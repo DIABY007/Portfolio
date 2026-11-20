@@ -11,7 +11,7 @@ interface BackgroundScrollSequenceProps {
 export default function BackgroundScrollSequence({
   totalFrames = 149,
   folderPath = '/sequence',
-  lerpFactor = 0.085,
+  lerpFactor = 0.25, // Réactivité vive pour éliminer tout décalage avec le scroll
 }: BackgroundScrollSequenceProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const imagesRef = useRef<(HTMLImageElement | null)[]>([]);
@@ -22,7 +22,7 @@ export default function BackgroundScrollSequence({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
+    const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
 
     const images: (HTMLImageElement | null)[] = new Array(totalFrames).fill(null);
@@ -33,6 +33,7 @@ export default function BackgroundScrollSequence({
     let currentProgress = 0;
     let lastRenderedIndex = -1;
     let animationFrameId: number;
+    let isDestroyed = false;
 
     const getFramePath = (index: number) => {
       const frameNum = String(index + 1).padStart(3, '0');
@@ -114,6 +115,8 @@ export default function BackgroundScrollSequence({
     };
 
     const loop = () => {
+      if (isDestroyed) return;
+
       const diff = targetProgress - currentProgress;
       if (Math.abs(diff) > 0.0001) {
         currentProgress += diff * lerpFactor;
@@ -126,60 +129,97 @@ export default function BackgroundScrollSequence({
     };
 
     const updateProgress = () => {
+      if (isDestroyed) return;
       const pct = Math.round((loadedCount / totalFrames) * 100);
       setLoadProgress(pct);
       if (loadedCount >= totalFrames) {
-        setTimeout(() => setIsLoaded(true), 300);
+        setTimeout(() => {
+          if (!isDestroyed) setIsLoaded(true);
+        }, 300);
       }
     };
 
-    const decodeOrLoad = async (img: HTMLImageElement) => {
-      try {
-        await img.decode();
-      } catch {
-        // Fallback handled
+    const fetchSingleImage = (i: number): Promise<void> => {
+      return new Promise((resolve) => {
+        if (isDestroyed || images[i]) {
+          resolve();
+          return;
+        }
+
+        const img = new Image();
+        img.src = getFramePath(i);
+
+        const onDone = () => {
+          images[i] = img;
+          loadedCount++;
+          updateProgress();
+          resolve();
+        };
+
+        img.decode().then(onDone).catch(onDone);
+      });
+    };
+
+    // Pool de concurrence pour ne pas saturer le réseau ni le CPU
+    const loadBatchWithConcurrency = async (indices: number[], concurrency = 4) => {
+      let index = 0;
+      const worker = async () => {
+        while (index < indices.length && !isDestroyed) {
+          const current = indices[index++];
+          await fetchSingleImage(current);
+        }
+      };
+
+      const workers = Array.from({ length: Math.min(concurrency, indices.length) }, () => worker());
+      await Promise.all(workers);
+    };
+
+    const startStagedPreload = async () => {
+      // Étape 1 : Frame 0 immédiate pour affichage instantané
+      await fetchSingleImage(0);
+      if (isDestroyed) return;
+      renderCurrent(true);
+
+      // Étape 2 : Chargement immédiat des "Keyframes" (toutes les 4 frames)
+      // Cela couvre 100% du scroll en un instant sans trou visuel
+      const keyframes: number[] = [];
+      for (let i = 4; i < totalFrames; i += 4) {
+        keyframes.push(i);
       }
-    };
+      await loadBatchWithConcurrency(keyframes, 5);
+      if (isDestroyed) return;
 
-    const loadAndDecodeImage = async (i: number) => {
-      const img = new Image();
-      img.src = getFramePath(i);
-
-      await decodeOrLoad(img);
-
-      images[i] = img;
-      loadedCount++;
-      updateProgress();
-    };
-
-    const preloadImages = async () => {
-      // 1. Instant load and paint first frame
-      const firstImg = new Image();
-      firstImg.src = getFramePath(0);
-
-      await decodeOrLoad(firstImg);
-
-      images[0] = firstImg;
-      loadedCount++;
-      drawImageCover(firstImg);
-      lastRenderedIndex = 0;
-      updateProgress();
-
-      // 2. Preload remaining frames in background
+      // Étape 3 : Remplissage fluide des frames intermédiaires en arrière-plan
+      const remaining: number[] = [];
       for (let i = 1; i < totalFrames; i++) {
-        loadAndDecodeImage(i);
+        if (i % 4 !== 0) {
+          remaining.push(i);
+        }
       }
+      await loadBatchWithConcurrency(remaining, 4);
     };
 
+    // Connexion aux événements
     window.addEventListener('resize', resizeCanvas, { passive: true });
     window.addEventListener('scroll', updateScroll, { passive: true });
 
+    // Si Lenis est présent, écouter les updates régulières
+    const intervalLenis = setInterval(() => {
+      const lenis = (window as unknown as { __lenis?: { on: (event: string, cb: () => void) => void } }).__lenis;
+      if (lenis) {
+        lenis.on('scroll', updateScroll);
+        clearInterval(intervalLenis);
+      }
+    }, 100);
+
     resizeCanvas();
-    preloadImages();
+    startStagedPreload();
     updateScroll();
     animationFrameId = requestAnimationFrame(loop);
 
     return () => {
+      isDestroyed = true;
+      clearInterval(intervalLenis);
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('scroll', updateScroll);
       cancelAnimationFrame(animationFrameId);
@@ -188,7 +228,7 @@ export default function BackgroundScrollSequence({
 
   return (
     <>
-      {/* Discreet top loading progress bar that fades out */}
+      {/* Barre de progression ultra-fine qui s'estompe automatiquement */}
       {!isLoaded && (
         <div className="fixed top-0 left-0 w-full h-[2.5px] bg-white/5 z-[9999] pointer-events-none transition-opacity duration-700">
           <div
@@ -198,11 +238,11 @@ export default function BackgroundScrollSequence({
         </div>
       )}
 
-      {/* Fixed Fullscreen Background Canvas */}
+      {/* Canvas en arrière-plan fixe */}
       <div className="fixed inset-0 w-screen h-screen -z-10 pointer-events-none overflow-hidden bg-[#02070d]">
         <canvas ref={canvasRef} className="block w-full h-full" />
-        {/* Cinematic dark overlay to guarantee 100% contrast & legibility for all text */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#02070d]/60 via-[#02070d]/40 to-[#02070d]/70 pointer-events-none" />
+        {/* Overlay sombre garantissant la lisibilité parfaite des textes et cartes */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#02070d]/65 via-[#02070d]/45 to-[#02070d]/70 pointer-events-none" />
       </div>
     </>
   );
