@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: transparent;
+  --background: #02070d;
   --foreground: #ededed;
   --neon-blue: #00D9FF;
   --neon-purple: #A855F7;
@@ -29,7 +29,13 @@ body {
   font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Glassmorphism enhancement for dark-gray cards */
+/* Sections transparentes pour révéler le fond animé 3D interactif */
+section {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Glassmorphism pour les cartes de contenu */
 .bg-\[var\(--color-dark-gray\)\] {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
